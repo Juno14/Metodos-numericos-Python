@@ -1,0 +1,23 @@
+from math import *
+ERROR = 1**-6
+#Entradas
+ec = x-sin(x)
+x0 = -1
+x1 = 1
+#Proceso
+f0 = eval(ec, {'x': x0}) #f(x0)
+f1 = eval(ec, {'x': x1}) #f(x1)
+f2 = 1**10
+if f0 * f1 < 0:
+    while abs(f2) > ERROR:
+        x2 = (x0 + x1) / 2
+        f2 = eval(ec, {'x': x2}) #f(x2)
+        if f1 * f2 < 0:
+            x0 = x2
+        if f0 * f2 < 0:
+            x1 = x2
+    respuesta = {'x': x2}
+else:
+    respuesta = 'Datos incorectos'
+#Salidas
+print (respuesta)

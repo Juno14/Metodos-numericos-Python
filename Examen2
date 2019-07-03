@@ -1,0 +1,20 @@
+import math
+def funciondada(x):
+          return x**4-10*x**3+3*x**2+x+23
+
+def derivada(x):
+         return 4*x**3-30*x**2+6*x+1
+i = int(0)
+x = 2
+tempo=0
+while(x != tempo and i < 100):
+          tempo=x
+          x= x-funciondada(x)/derivada(x)
+          e=abs((x-tempo)/x)
+
+          print("x" +  str(i) +"=" + str(x) + "Error=" + str(e) + "\n")
+          i=i+1
+if(i == 100):
+         print("\n\nNo converge")
+else:
+         print("\n\nSolucion x:" + str(x))
