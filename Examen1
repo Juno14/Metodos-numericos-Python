@@ -1,19 +1,24 @@
-from math import *
+import math
 def funcion(x):
-        ec = x-math.sin(x)
-        return ec
+        y = x-math.sin(x)
+        return y
 #Entradas
-x0 = -1
-x1 = 1
-ERROR = 1**-6
-x2 = (x0 + x1)/2
+x0 = 1
+x1 = 10
 i = 0
-if funcion(x0)*funcion(x2) < 0:
-              x1 = x2
-              signo = "Negativo"
-              limite = "Superior"
-else:
-              x0 = x2
-              signo = "Positivo"
-              limite = "Inferior"
-print(f"La raiz es:" , x2)
+ERROR = 10
+while ERROR > 1**-8:
+    x2 = (x0 + x1) / 2
+    fx0 = funcion(x0)
+    fx2 = funcion(x2)
+    if fx2 == 0:
+        raiz = x2
+        break
+    elif fx0 * fx2 < 0:
+        x1 = x2
+    else:
+        x0 = x2
+    raiz = x2
+    i = i + 1
+    ERROR = abs(fx2)
+print('Iteracion:',i,'Raiz aproximada:',raiz)
