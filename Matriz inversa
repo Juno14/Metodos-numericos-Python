@@ -13,3 +13,23 @@ c[2, 2:] = c[2, 2:] / c[2, 2]
 c[0, 2:] = c[0, 2:] - c[0, 2] * c[2, 2:]
 c[1, 2:] = c[1, 2:] - c[1, 2] * c[2, 2:]
 print(c[0:, 3:])
+# Segundo codigo
+from numpy import *
+def gaussjordan3(a, d):
+    n = len(d)
+    c = concatenate([a, d], axis = 1)
+    print (c)
+    for e in range(n):
+        t = c[e, e]
+        for j in range (e, n+3):
+            c[e, j] = c[e, j] / t
+        for i in range (n):
+            if i != e:
+                t = c[i, e]
+                for j in range (e, n+3):
+                    c[i, j] = c[i, j] - t*c[e, j]
+    print (c)
+    print (c[0:,3:])
+a = array ([[4, 2, 5], [2, 5, 8], [5, 4, 3]], float)
+d = eye(3)
+print (gaussjordan3(a, d))
